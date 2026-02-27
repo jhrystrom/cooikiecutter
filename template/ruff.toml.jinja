@@ -1,0 +1,64 @@
+target-version = "py{{ python_version.replace('.', '') }}"
+exclude = [
+  ".bzr",
+  ".direnv",
+  ".eggs",
+  ".git",
+  ".hg",
+  ".nox",
+  ".pants.d",
+  ".pytype",
+  ".ruff_cache",
+  ".svn",
+  ".tox",
+  ".venv",
+  "__pypackages__",
+  "_build",
+  "buck-out",
+  "build",
+  "dist",
+  "node_modules",
+  "venv",
+]
+
+[lint]
+select = [
+  "A",    # flake8-builtins
+  "ANN",  # flake8-annotations
+  "ARG",  # flake8-unused-arguments
+  "C4",   # flake8-comprehensions
+  "COM",  # flake8-commas
+  "D417", # pydocstyle: missing argument descriptions
+  "E",    # pycodestyle errors
+  "ERA",  # eradicate (commented-out code)
+  "F",    # Pyflakes
+  "I",    # isort
+  "ICN",  # flake8-import-conventions
+  "PIE",  # flake8-pie
+  "PLE",  # Pylint errors
+  "PLW",  # Pylint warnings
+  "PT",   # flake8-pytest-style
+  "PTH",  # flake8-use-pathlib
+  "Q",    # flake8-quotes
+  "RET",  # flake8-return
+  "RSE",  # flake8-raise
+  "RUF",  # Ruff-specific rules
+  "SIM",  # flake8-simplify
+  "UP",   # pyupgrade
+  "W",    # pycodestyle warnings
+]
+ignore = [
+  "ANN401",  # Allow Any type
+  "COM812",  # Trailing comma (conflicts with formatter)
+  "E501",    # Line too long (handled by formatter)
+  "RET504",  # Unnecessary assignment before return
+]
+unfixable = ["ERA"]
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[lint.flake8-annotations]
+mypy-init-return = true
+suppress-none-returning = true
+
+[lint.mccabe]
+max-complexity = 10
